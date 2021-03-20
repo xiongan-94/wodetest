@@ -1,0 +1,87 @@
+xiongan@LAPTOP-JD189Q9C MINGW64 /d/Project/github (master)
+$ git config --global http.sslVerify "false"
+
+xiongan@LAPTOP-JD189Q9C MINGW64 /d/Project/github (master)
+$ git config --global --unset http.proxy
+
+xiongan@LAPTOP-JD189Q9C MINGW64 /d/Project/github (master)
+$ ^C
+
+xiongan@LAPTOP-JD189Q9C MINGW64 /d/Project/github (master)
+$ git config --global http.sslVerify "false"
+
+xiongan@LAPTOP-JD189Q9C MINGW64 /d/Project/github (master)
+$
+
+
+
+错误信息：
+
+Push rejected: Push to origin/master was rejected 
+
+解决办法：
+
+1.选择你要上传代码的文件夹，鼠标右键git Bash Here
+
+2.输入下面两行命令
+
+git pull origin master –allow-unrelated-histories   --把远程仓库中的内容 pull 到本地工作目录
+git push -u origin master -f  --在 pull 下来的项目中做修改，通过以上命令 push 到远程仓库了
+ 
+
+错误描述
+在使用git提交的时候出现The file will have its original line endings in your working directory.错误，后来发现 自己再提交的时候忘记输入git add 上传的文件 出现了上面的错误，需要下面进行修改：
+ 
+1 git rm -r -f --cached ./   (删除缓存)
+ 
+2 git add . （添加该目录下所有文件）
+ 
+3 git push -u origin master  （这时候提交就没问题了）
+ 
+初次提交的命令
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:xxxx.git
+git push -u origin master
+
+
+将github上的代码仓库拉取到本地
+git clone https的网址
+git status
+git add .
+git commit -m "更新详述"
+git pull
+git push
+
+
+安装git成功后打开Git Bash，输入下列命令，设置git全局用户名和邮箱
+git config --global user.name "xiongan"
+git config --global user.email "xiongan@hihonor.com"
+在IDEA中设置Git，在File-->Settings->Version Control-->Git-->Path to Git executable选择你的git安装后的git.exe文件，然后点击Test，测试是否设置成功：
+在IDEA中设置创建Git存储库vcs->import into version control -> create git repository
+然后选中你要上传的项目，点击OK，此时项目需要上传的文件全部变成红色：
+上传项目到本地仓库，项目右键选择Git-->add，此时项目文件变成绿色，此时文件只是处于暂存区，并没有真正进入到版本库中：
+右击工程文件 ->git->commit,提交到本地git。至此，本地git已commit完毕，此时项目文件从暂存区真正进入版本库中：
+
+克隆
+1.VCS-Checkout from Version Control-Git
+从远程库复制地址下来，根据要求，选择下一步即可
+https://www.freesion.com/article/7718444774/
+
+
+1.初始化一个空的git仓库
+git init
+git add .
+git commit -m "first commit" .
+添加github上远程仓库
+git remote add origin git@github.com:xiongan-94/wodetest.git
+git pull origin master –allow-unrelated-histories   --把远程仓库中的内容 pull 到本地工作目录
+git push -u origin master -f  --在 pull 下来的项目中做修改，通过以上命令 push 到远程仓库了
+
+git  clone   <远端地址>
+在推送之前，执行git fetch，发现远程库和本地库有版本变化
+查看git status
+建议先pull，将远程库的版本和本地库的版本merge后再push
+总结：pull----merge-----push
+华为云代码托管https://bbs.huaweicloud.com/blogs/198408
