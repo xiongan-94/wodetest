@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="56860491-6aaa-4210-9f04-1ef0f6258e58" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="200821BigData" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/dev/apache-maven-3.5.3" />
+        <option name="userSettingsFile" value="D:\dev\apache-maven-3.5.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1ktvtNLUPFjwTXeUu0UbhbEo052" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/Spark/src/test/scala" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Spark/target/classes" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="inlay.hints.Scala" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.atguigu.spark.main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\0821\200821BigData" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.atguigu.spark.core.app" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\0821\200821BigData\Spark\target\classes" />
+      <recent name="E:\0821\200821BigData\Spark\src\main\resources" />
+      <recent name="E:\0821\200821BigData\Spark\src\test\resources" />
+      <recent name="E:\0821\200821BigData\Spark\input" />
+      <recent name="E:\0821\200821BigData\Spark\src\test\scala\com\atguigu\spark\day08" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MainApp">
+    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.spark.sql.MainApp" />
+      <module name="Spark" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.spark.sql.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HiveTest.testHive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Spark" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.spark.day08.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.spark.day08" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.spark.day08.HiveTest" />
+      <option name="METHOD_NAME" value="testHive" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HiveTest.testHiveWrite" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Spark" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.spark.day08.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.spark.day08" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.spark.day08.HiveTest" />
+      <option name="METHOD_NAME" value="testHiveWrite" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReadAndWriteTest.testMysql" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Spark" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.spark.day08.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.spark.day08" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.spark.day08.ReadAndWriteTest" />
+      <option name="METHOD_NAME" value="testMysql" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReadAndWriteTest.testParquet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Spark" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.spark.day08.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.atguigu.spark.day08" />
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.spark.day08.ReadAndWriteTest" />
+      <option name="METHOD_NAME" value="testParquet" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MainApp" />
+        <item itemvalue="JUnit.ReadAndWriteTest.testParquet" />
+        <item itemvalue="JUnit.HiveTest.testHiveWrite" />
+        <item itemvalue="JUnit.HiveTest.testHive" />
+        <item itemvalue="JUnit.ReadAndWriteTest.testMysql" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="56860491-6aaa-4210-9f04-1ef0f6258e58" name="Default Changelist" comment="" />
+      <created>1606532915824</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606532915824</updated>
+      <workItem from="1606532918481" duration="2952000" />
+      <workItem from="1606546070193" duration="6147000" />
+      <workItem from="1606654800354" duration="112000" />
+      <workItem from="1606697180926" duration="20785000" />
+      <workItem from="1606727287939" duration="389000" />
+      <workItem from="1606784313086" duration="18832000" />
+      <workItem from="1606869810955" duration="19073000" />
+      <workItem from="1607041545918" duration="21431000" />
+      <workItem from="1607078156086" duration="4727000" />
+      <workItem from="1607128343451" duration="17654000" />
+      <workItem from="1607174611931" duration="5844000" />
+      <workItem from="1607300863540" duration="10392000" />
+      <workItem from="1607312500381" duration="3831000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="413" y="122" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1607322158720">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="122" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1607322158720" />
+    <state x="414" y="173" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606809202233">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="414" y="173" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1606809202233" />
+    <state x="488" y="61" key="#com.intellij.ide.util.MemberChooser" timestamp="1607323245532">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="61" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1607323245532" />
+    <state x="448" y="231" width="470" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1607070568561">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="448" y="231" width="470" height="272" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1607070568561" />
+    <state x="438" y="70" key="#xdebugger.evaluate" timestamp="1606890941193">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="438" y="70" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1606890941193" />
+    <state width="718" height="466" key="DebuggerActiveHint" timestamp="1606552273495">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="718" height="466" key="DebuggerActiveHint/0.0.1366.728@0.0.1366.728" timestamp="1606552273495" />
+    <state x="451" y="122" key="FileChooserDialogImpl" timestamp="1607128348939">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="451" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1607128348939" />
+    <state width="1323" height="483" key="GridCell.Tab.0.bottom" timestamp="1607324247753">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="483" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607324247753" />
+    <state width="1323" height="483" key="GridCell.Tab.0.center" timestamp="1607324247753">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="483" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1607324247753" />
+    <state width="1323" height="483" key="GridCell.Tab.0.left" timestamp="1607324247753">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="483" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1607324247753" />
+    <state width="1323" height="483" key="GridCell.Tab.0.right" timestamp="1607324247753">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="483" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1607324247753" />
+    <state width="1323" height="282" key="GridCell.Tab.1.bottom" timestamp="1607157935572">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="282" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607157935572" />
+    <state width="1323" height="282" key="GridCell.Tab.1.center" timestamp="1607157935572">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="282" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1607157935572" />
+    <state width="1323" height="282" key="GridCell.Tab.1.left" timestamp="1607157935572">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="282" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1607157935572" />
+    <state width="1323" height="282" key="GridCell.Tab.1.right" timestamp="1607157935572">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="282" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1607157935572" />
+    <state x="236" y="19" key="SettingsEditor" timestamp="1607068902653">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="236" y="19" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1607068902653" />
+    <state x="404" y="105" width="549" height="524" key="StructurePopup" timestamp="1607312654019">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="404" y="105" width="549" height="524" key="StructurePopup/0.0.1366.728@0.0.1366.728" timestamp="1607312654019" />
+    <state x="426" y="363" width="579" height="1814" key="StructurePopup/1440.164.1920.1040/0.0.1440.2520@0.0.1440.2520" timestamp="1607178222756" />
+    <state x="757" y="202" width="1029" height="1008" key="StructurePopup/2560.164.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1607091290412" />
+    <state x="482" y="144" key="chooseDestDirectoryDialog" timestamp="1606547001665">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="482" y="144" key="chooseDestDirectoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1606547001665" />
+    <state x="375" y="192" key="com.intellij.ide.util.TipDialog" timestamp="1607312500461">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="375" y="192" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1607312500461" />
+    <state x="703" y="369" key="com.intellij.ide.util.TipDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606654800339" />
+    <state x="703" y="369" key="com.intellij.ide.util.TipDialog/2560.164.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1607174611941" />
+    <state x="57" y="68" key="new project wizard" timestamp="1606532930119">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="57" y="68" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1606532930119" />
+    <state x="454" y="82" key="org.jetbrains.plugins.scala.testingSupport.ScalaTestCreator$$anon$1$$anon$2" timestamp="1606547001707">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="454" y="82" key="org.jetbrains.plugins.scala.testingSupport.ScalaTestCreator$$anon$1$$anon$2/0.0.1366.728@0.0.1366.728" timestamp="1606547001707" />
+    <state x="346" y="49" width="921" height="678" key="search.everywhere.popup" timestamp="1607324050008">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="921" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1607324050008" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/spark/spark-core_2.12/3.0.0/spark-core_2.12-3.0.0-sources.jar!/org/apache/spark/rdd/RDD.scala</url>
+          <line>1093</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/spark/spark-core_2.12/3.0.0/spark-core_2.12-3.0.0-sources.jar!/org/apache/spark/rdd/JdbcRDD.scala</url>
+          <line>84</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/spark/spark-core_2.12/3.0.0/spark-core_2.12-3.0.0-sources.jar!/org/apache/spark/rdd/JdbcRDD.scala</url>
+          <line>82</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

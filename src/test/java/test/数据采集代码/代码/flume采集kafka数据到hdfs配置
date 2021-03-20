@@ -1,0 +1,63 @@
+#1、定义agent、source、channel、sink的名称
+a1.sources = r1
+a1.channels = c1
+a1.sinks = k1
+
+#2、描述source
+a1.sources.r1.type = org.apache.flume.source.kafka.KafkaSource
+#指定flume消费哪个topic的数据
+a1.sources.r1.kafka.topics = applog
+#指定kafka集群地址
+a1.sources.r1.kafka.bootstrap.servers = hadoop102:9092,hadoop103:9092
+#定义消费者组的名称
+a1.sources.r1.kafka.consumer.group.id = applog_consumer
+#指定flume一个批次从kafka采集多少数据
+a1.sources.r1.batchSize = 100
+#指定kafka中的数据的类型是否为Event格式
+a1.sources.r1.useFlumeEventFormat = false
+#指定消费者组第一次消费topic数据的时候从哪里开始消费
+a1.sources.r1.kafka.consumer.auto.offset.reset = earliest
+
+#2.1、定义拦截器，使用数据的时间戳作为目录的生成时间
+a1.sources.r1.interceptors = i1
+a1.sources.r1.interceptors.i1.type = com.atguigu.interceptor.MyTimeStampInterceptor$Builder
+
+#3、描述channel
+a1.channels.c1.type = file
+#指定file channel数据存储在本地磁盘哪个目录
+a1.channels.c1.dataDirs = /opt/module/flume/datas
+#指定checkpoint的路径
+a1.channels.c1.checkpointDir = /opt/module/flume/checkpoint
+#设置channel事务容量
+a1.channels.c1.transactionCapacity = 100
+#设置channel的容量
+a1.channels.c1.capacity = 1000000
+
+#4、描述sink
+a1.sinks.k1.type = hdfs
+#设置数据保存在hdfs哪个路径
+a1.sinks.k1.hdfs.path = /applog/events/%Y%m%d
+#设置hdfs文件前缀
+a1.sinks.k1.hdfs.filePrefix = event-
+#设置多久生成新文件
+a1.sinks.k1.hdfs.rollInterval = 30
+#设置旧文件写入数据量多大之后生成新文件
+a1.sinks.k1.hdfs.rollSize = 133169152
+#设置文件写入多少个Event之后生成新文件
+a1.sinks.k1.hdfs.rollCount = 0
+#设置sink每个批次从channel中拉取多少数据
+a1.sinks.k1.hdfs.batchSize = 100
+#指定数据的压缩格式
+a1.sinks.k1.hdfs.codeC= lzop
+#指定写入的文件类型
+a1.sinks.k1.hdfs.fileType= CompressedStream
+#是否按照指定的时间间隔生成文件夹
+a1.sinks.k1.hdfs.round= true
+#指定时间间隔的值
+a1.sinks.k1.hdfs.roundValue= 24
+#指定时间间隔的单位
+a1.sinks.k1.hdfs.roundUnit= hour
+
+#5、关联source->channel->sink
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1

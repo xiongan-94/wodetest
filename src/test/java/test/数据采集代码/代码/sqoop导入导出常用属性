@@ -1,0 +1,54 @@
+bin/sqoop import
+	-------------公有属性-------------------
+	--connect 指定mysql的url地址
+	--username 指定mysql的用户名
+	--password 指定mysql的密码
+	----------------导入HDFS------------------------
+	--append  是否以数据追加的形式写入HDFS
+	--as-textfile 是否以文本文件的格式写入HDFS
+	--as-parquetfile 是否以parquet文件格式写入HDFS
+	--delete-target-dir 在存储数据之前,删除数据的存储路径
+	--fetch-size 指定每个批次从mysql拉取多少数据保存到HDFS
+	--num-mappers[-m] 指定用多少个mapper并行从mysql导出数据
+	--query[-e] 通过sql语句从mysql导出符合要求的数据到HDFS
+		--where 指定从mysql导出哪些数据
+		--table 指定导出Mysql哪个表的数据
+		--columns 根据指定的字段从mysql导出数据到HDFS
+	--split-by 指定按照那个字段进行切分
+	--target-dir 指定数据保存到HDFS哪个目录
+	--compress[-z] 是否在保存数据的是压缩
+	--compression-codec 指定压缩格式
+	--null-string 指定mysql 字符串列中的null保存到HDFS的时候以什么形式存储
+	--null-non-string 指定mysql非字符串列中的null保存到HDFS的时候以什么形式存储
+	--check-column 指定根据哪个字段判断数据是增量数据
+	--incremental append[新增]/lastmodified[最后一次修改]
+	--last-value 上一次采集的最后一个check-column字段的值
+	--fields-terminated-by 指定字段之间的分隔符
+	--lines-terminated-by 指定行之间的分隔符
+	
+	---------------------导入HIVE----------------------
+	--hive-import 代表将数据导入hive
+	--hive-overwrite 覆盖hive中的数据
+	--create-hive-table 导入hive表的时候，如果hive的表不存在会创建hive表[如果表已经存在，此时不要添加该属性]
+	--hive-table 指定数据导入hive哪个表
+	--hive-partition-key 指定数据写入hive分区表的时候的分区字段名
+	--hive-partition-value 指定数据写入hive分区表的时候的分区字段值
+	load data inpath '...' into table person(inc_day='20200301') 
+	
+	
+bin/sqoop export
+	-------------公有属性-------------------
+	--connect 指定mysql的url地址
+	--username 指定mysql的用户名
+	--password 指定mysql的密码
+	----------------------------------------
+	--columns 将数据导入到mysql哪些字段
+	--export-dir 从HDFS哪个目录导出数据
+	--num-mappers[-m] 指定用多少个mapper来导数据
+	--table 指定将数据导入到mysql哪个表
+	--update-key 指定根据哪个字段判断hdfs的数据与mysql的数是同一条数据
+	--update-mode updateonly[只更新mysql中已经存在的数]/allowinsert[即更新也插入]
+	--input-null-string 指定HDFS中字符串列中null值存储到mysql的时候以什么形式存储
+	--input-null-non-string 指定HDFS中非字符串列中null值存储到mysql的时候以什么形式存储
+	--fields-terminated-by 指定字段之间的分隔符
+	--lines-terminated-by 指定行之间的分隔符

@@ -1,0 +1,39 @@
+#1、定义agent、source、channel、sink的名称
+a1.sources = r1
+a1.channels = c1 c2
+a1.sinks = k1 k2
+#2、描述source
+a1.sources.r1.type = netcat
+a1.sources.r1.bind = 0.0.0.0
+a1.sources.r1.port = 9999
+
+#2.1、描述拦截器
+#命名拦截器
+a1.sources.r1.interceptors = i1
+#指定使用自定义拦截器的全类名
+a1.sources.r1.interceptors.i1.type = com.atguigu.interceptor.MyInterceptor$Builder
+
+#2.2、描述channel selector
+a1.sources.r1.selector.type = multiplexing
+a1.sources.r1.selector.header = xx
+a1.sources.r1.selector.mapping.syslog = c1
+a1.sources.r1.selector.mapping.user = c2
+
+#3、描述channel
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 10000
+a1.channels.c1.transactionCapacity = 10000
+
+a1.channels.c2.type = memory
+a1.channels.c2.capacity = 10000
+a1.channels.c2.transactionCapacity = 10000
+#4、描述sink
+a1.sinks.k1.type = file_roll
+a1.sinks.k1.sink.directory = /opt/module/flume/datas/s1
+
+a1.sinks.k2.type = file_roll
+a1.sinks.k2.sink.directory = /opt/module/flume/datas/s2
+#5、关联source->channel->sink
+a1.sources.r1.channels = c1 c2
+a1.sinks.k1.channel = c1
+a1.sinks.k2.channel = c2

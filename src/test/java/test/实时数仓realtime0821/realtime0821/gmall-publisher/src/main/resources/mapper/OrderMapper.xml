@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--namespace 对应前面定义的接口-->
+<mapper namespace="com.atguigu.realtime.gmallpublisher.mapper.OrderMapper">
+    <select id="getAmountTotal" resultType="java.math.BigDecimal">
+        select sum(final_detail_amount) sum_amout from order_wide where create_date=#{date}
+    </select>
+
+    <select id="getAmountHour" resultMap="hourList">
+        select create_hour, sum(final_detail_amount) sum_amout from order_wide where create_date=#{date} group by create_hour;
+    </select>
+
+    <resultMap id="hourList" type="java.util.Map" autoMapping="true"></resultMap>
+
+</mapper>

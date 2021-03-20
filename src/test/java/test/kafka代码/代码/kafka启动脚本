@@ -1,0 +1,34 @@
+#! /bin/bash
+#1、判定是否输入参数
+if [ $# -lt 1 ]
+then
+	echo "必须输入参数...."
+	exit
+fi
+#2、根据参数匹配动作
+case $1 in
+"start")
+	for host in hadoop102 hadoop103 hadoop104
+	do
+		echo "=================start $host kafka==============="
+		ssh $host "/opt/module/kafka/bin/kafka-server-start.sh -daemon /opt/module/kafka/config/server.properties"
+	done
+;;
+"stop")
+	for host in hadoop102 hadoop103 hadoop104
+	do
+		echo "=================stop $host kafka==============="
+		ssh $host "/opt/module/kafka/bin/kafka-server-stop.sh"
+	done
+;;
+"status")
+	for host in hadoop102 hadoop103 hadoop104
+	do
+		pid=$(ssh $host "ps -ef | grep server.properties | grep -v grep")
+		[ "$pid" ] && echo "kafka进程正常" || echo "kafka进程不存在或者异常"
+	done
+;;
+*)
+	echo "参数输入错误...."
+;;
+esac

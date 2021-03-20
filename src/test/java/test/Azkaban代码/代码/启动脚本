@@ -1,0 +1,36 @@
+#! /bin/bash
+#1、判定是否输入参数
+if [ $# -lt 1 ]
+then
+	echo "必须输入参数...."
+	exit
+fi
+#2、匹配参数执行对应的逻辑
+case $1 in
+"start")
+	#1、启动exec server
+	for host in hadoop102 hadoop103 hadoop104
+	do
+		echo "===========start $host exec server============="
+		ssh $host "cd /opt/module/azkaban/azkaban-exec-server;bin/start-exec.sh"
+		#2、激活exec server
+		sleep 3s
+		ssh $host "cd /opt/module/azkaban/azkaban-exec-server;curl -G \"$host:\$(<./executor.port)/executor?action=activate\" && echo"
+	done
+	echo "================start azkaban web server================"
+	#2、启动web server
+	ssh hadoop102 "cd /opt/module/azkaban/azkaban-web-server;bin/start-web.sh"
+;;
+"stop")
+	for host in hadoop102 hadoop103 hadoop104
+	do
+		echo "===============stop $host exec server================"
+		ssh $host "/opt/module/azkaban/azkaban-exec-server/bin/shutdown-exec.sh"
+	done
+	echo "================stop hadoop102 web server================"
+	ssh hadoop102 "/opt/module/azkaban/azkaban-web-server/bin/shutdown-web.sh"
+;;
+*)
+	echo "参数输入错误....."
+;;
+esac

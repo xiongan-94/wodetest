@@ -1,0 +1,17 @@
+#从kafka 的topic中读取数据显示在控制台
+#1、定义agent、channel、sink的名称
+a1.channels = c1
+a1.sinks = k1
+
+#2、描述channel
+a1.channels.c1.type = org.apache.flume.channel.kafka.KafkaChannel
+a1.channels.c1.kafka.bootstrap.servers = hadoop102:9092,hadoop103:9092
+a1.channels.c1.kafka.topic = demo
+a1.channels.c1.kafka.consumer.group.id = flume_consumer
+a1.channels.c1.parseAsFlumeEvent = false
+a1.channels.c1.kafka.consumer.auto.offset.reset = earliest
+
+#3、描述sink
+a1.sinks.k1.type = logger
+#4、关联channel->sink
+a1.sinks.k1.channel = c1

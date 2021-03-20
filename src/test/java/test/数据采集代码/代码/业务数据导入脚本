@@ -1,0 +1,84 @@
+#! /bin/bash
+# import_data.sh 是否第一次导入数据/表名 日期[告诉应该导哪一天的数据,可以不传,默认导前一天的数据]
+#1、判断参数是否传入
+if [ $# -lt 1 ]
+then
+	echo "必须传入参数..."
+	exit
+fi
+#2、确定日期
+[ "$2" ] && datestr=$2 || datestr=$(date -d '-1 day' +%Y-%m-%d)
+echo "确定导入$datestr的数据"
+import_data(){
+/opt/module/sqoop/bin/sqoop import \
+--connect jdbc:mysql://hadoop102:3306/gmall \
+--username root \
+--password root123 \
+--delete-target-dir \
+--num-mappers 2 \
+--query "$1" \
+--target-dir hdfs://hadoop102:8020/origin_data/gmall/db/$2/$datestr \
+--split-by $3 \
+--compress \
+--compression-codec lzop \
+--null-string '\\N' \
+--null-non-string '\\N' \
+--fields-terminated-by ,
+hadoop jar /opt/module/hadoop/share/hadoop/common/hadoop-lzo-0.4.20.jar com.hadoop.compression.lzo.DistributedLzoIndexer hdfs://hadoop102:8020/origin_data/gmall/db/$2/$datestr
+}
+
+import_userinfo(){
+	import_data "select * from user_info where date_format(create_time,'%Y-%m-%d')='$datestr' or date_format(operate_time,'%Y-%m-%d')='$datestr' and \$CONDITIONS" "user_info" "id"
+}
+import_spu_info(){
+	import_data "select * from spu_info where 1=1 and \$CONDITIONS" "spu_info" "id"
+}
+import_base_region(){
+	import_data "select * from base_region where 1=1 and \$CONDITIONS" "base_region" "id"
+}
+import_order_status_log(){
+	import_data "select * from order_status_log where date_format(operate_time,'%Y-%m-%d')='$datestr'  and \$CONDITIONS" "order_status_log" "id"
+}
+#3、根据第一个传入的参数进行匹配
+case $1 in
+#第一次导入数据
+"first")
+#导入user_info表的数据
+import_userinfo
+#导入spu_info表的数据
+import_spu_info
+#导入base_region表的数据
+import_base_region
+#导入order_status_log表的数据
+import_order_status_log
+;;
+#不是第一次导入数据
+"all")
+#导入user_info表的数据
+import_userinfo
+#导入spu_info表的数据
+import_spu_info
+#导入order_status_log表的数据
+import_order_status_log
+;;
+#导入user_info表的数据
+"user_info")
+import_userinfo
+;;
+#导入spu_info表的数据
+"spu_info")
+import_spu_info
+;;
+#导入base_region表的数据
+"base_region")
+import_base_region
+;;
+#导入order_status_log表的数据
+"order_status_log")
+import_order_status_log
+;;
+*)
+echo "参数输入错误...."
+;;
+esac
+

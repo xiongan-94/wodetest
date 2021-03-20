@@ -1,0 +1,35 @@
+#! /bin/bash
+#1、判断是否有参数传入
+if [ $# -lt 1 ]
+then
+	echo "必须传入一个参数..."
+	exit
+fi
+#2、根据参数执行对应的逻辑
+case $1 in
+"start")
+	for host in hadoop102 hadoop103
+	do
+		echo "===============start $host data==============="
+		ssh $host "nohup /opt/module/flume/bin/flume-ng agent -n a1 -c /opt/module/flume/conf/ -f /opt/module/flume/job/flume-to-kafka.conf -Dflume.root.logger=INFO,console >/opt/module/flume/logs/flume.log 2>&1 &"
+	done
+;;
+"stop")
+	for host in hadoop102 hadoop103
+	do
+		echo "===============start $host data==============="
+		ssh $host "ps -ef| grep flume-to-kafka.conf | grep -v grep|awk '{print \$2}' | xargs kill -9"
+	done
+;;
+"status")
+	for host in hadoop102 hadoop103
+	do
+		echo "===============start $host data==============="
+		pid=$(ssh $host "ps -ef| grep flume-to-kafka.conf | grep -v grep")
+		[ "$pid" ] && echo "flume进程正常" || echo "flume进程不存在"
+	done
+;;
+*)
+	echo "参数传输错误...."
+;;
+esac

@@ -1,0 +1,19 @@
+#采集端口的数据写入kafka
+#1、定义agent、source、channel名称
+a1.sources = r1
+a1.channels = c1
+
+#2、描述source
+a1.sources.r1.type = netcat
+a1.sources.r1.bind = 0.0.0.0
+a1.sources.r1.port = 8888
+
+#3、描述channel
+a1.channels.c1.type = org.apache.flume.channel.kafka.KafkaChannel
+a1.channels.c1.kafka.bootstrap.servers = hadoop102:9092,hadoop103:9092
+a1.channels.c1.kafka.topic = flume_topic
+#是否以Event的数据类型写入kafka
+a1.channels.c1.parseAsFlumeEvent = false
+
+#4、关联source->channel
+a1.sources.r1.channels = c1

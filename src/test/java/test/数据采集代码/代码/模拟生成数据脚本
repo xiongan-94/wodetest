@@ -1,0 +1,12 @@
+#! /bin/bash
+for host in hadoop102 hadoop103
+do
+	echo "==========start $host data=============="
+	#0:标准输入  0<
+	#1:标准输出 1>文件路径 / >文件路径
+	#2:错误输出 2>文件路径 / 2>&1
+	#/dev/null: 黑洞
+	#nohup: 前台执行,免挂断[ssh断开程序不会终止]
+	#&: 后台执行[ssh断开程序会自动终止]
+	ssh $host "nohup java -jar /opt/module/applog/gmall2020-mock-log-2020-04-01.jar >/dev/null 2>&1 &"
+done

@@ -1,0 +1,38 @@
+GET
+	能够通过浏览器直接访问
+	如果传递的参数比较简单就可以使用GET请求
+POST
+	不能够通过浏览器访问
+	如果传递对象就用POST请求
+
+json字符串:
+	1、普通对象、Map
+		通过{}包裹,{}中属性名与属性值通过:分割，属性与属性之间通过,分割，属性通过""括起来,属性值如果是字符串通过""括起来
+		Map<String,Object> map = new HashMap<String,Object>()
+		map.put("name","zhangsan")
+		map.put("age",20)
+		
+		json字符串： {"name":"zhangsan","age":20}
+		class Person{
+			private String name;
+			private int age;
+			...
+		}
+		
+		Person p = new Person("zhangsan",20)
+		json字符串: {"name":"zhangsan","age":20}
+	2、数组和List
+		通过[]包裹，元素和元素之间通过,分割
+		List<String> list = new ArrayList<String>()
+		list.add("java")
+		list.add("spark")
+		list.add("hello")
+		
+		json字符串： ["java","spark","hello"]
+		
+		List<Person> persons = new ArrayList<Person>()
+		persons.add(new Person("bb",20))
+		persons.add(new Person("aa",10))
+		
+		json字符串: [{"name":"aa","age":10},{"name":"bb","age":20}]
+		

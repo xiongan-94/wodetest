@@ -1,0 +1,35 @@
+#flume1配置
+#1、定义agent、source、channel、sink的名称
+a1.sources = r1
+a1.channels = c1 c2
+a1.sinks = k1 k2
+#1.1、定义channel selector
+
+#2、描述source
+a1.sources.r1.type = exec
+a1.sources.r1.command = tail -F /opt/module/flume/datas/a.txt
+a1.sources.r1.batchSize = 100
+#3、描述channel
+#3.1、描述c1
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 1000
+#3.2、描述c2
+a1.channels.c2.type = memory
+a1.channels.c2.capacity = 1000
+a1.channels.c2.transactionCapacity = 1000
+
+#4、描述sink
+#4.1 描述k1
+a1.sinks.k1.type = avro
+a1.sinks.k1.hostname = hadoop103
+a1.sinks.k1.port = 9999
+#4.2 描述k2
+a1.sinks.k2.type = avro
+a1.sinks.k2.hostname = hadoop104
+a1.sinks.k2.port = 9999
+
+#5、关联source->channel->sink
+a1.sources.r1.channels = c1 c2
+a1.sinks.k1.channel = c1
+a1.sinks.k2.channel = c2

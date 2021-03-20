@@ -1,0 +1,110 @@
+create table school(
+region_name string,
+school_name string,
+class_name string,
+stu_name string)
+row format delimited fields terminated by ',';
+
+需求: 统计每个区域的学生人数,每个学校的学生人数,每个班级的学生人数
+	多维度聚合
+	小计、总计
+select region_name,null school_name,null class_name,count(1) num
+from school
+group by region_name
+union all
+select region_name,school_name,null class_name,count(1) num
+from school
+group by region_name,school_name
+union all
+select region_name,school_name,class_name,count(1) num
+from school
+group by region_name,school_name,class_name
+
+-----------------------------grouping sets----------------------
+select region_name,school_name,class_name,count(1) num
+from school
+group by region_name,school_name,class_name
+grouping sets( (region_name),(region_name,school_name),(region_name,school_name,class_name))
+
+----------------------rollup-------------------------------
+select region_name,school_name,class_name,count(1) num
+from school
+group by region_name,school_name,class_name with rollup
+
+等同结果：
+select region_name,school_name,class_name,count(1)
+from school
+group region_name,school_name,class_name
+union all
+select region_name,school_name,null class_name,count(1)
+from school
+group region_name,school_name
+union all
+select region_name,null school_name,null class_name,count(1)
+from school
+group region_name
+union all
+select null region_name,null school_name,null class_name,count(1)
+from school
++--------------+--------------+-------------+------+
+| region_name  | school_name  | class_name  | num  |
++--------------+--------------+-------------+------+
+| NULL         | NULL         | NULL        | 16   |
+| 宝安区          | NULL         | NULL        | 8    |
+| 宝安区          | 宝安中学         | NULL        | 4    |
+| 宝安区          | 宝安中学         | 战士班         | 4    |
+| 宝安区          | 宝安小学         | NULL        | 4    |
+| 宝安区          | 宝安小学         | 法师班         | 4    |
+| 龙华区          | NULL         | NULL        | 8    |
+| 龙华区          | 龙华大学         | NULL        | 4    |
+| 龙华区          | 龙华大学         | 打野班         | 4    |
+| 龙华区          | 龙华幼儿园        | NULL        | 4    |
+| 龙华区          | 龙华幼儿园        | 辅助班         | 4    |
++--------------+--------------+-------------+------+
+----------------------------------cube[全维度统计]----------------------------------
+select region_name,school_name,class_name,count(1) num
+from school
+group by region_name,school_name,class_name with cube
+
+
+region_name,school_name,class_name
+region_name,class_name
+region_name,school_name
+school_name,class_name
+region_name
+class_name
+school_name
+整体
+
+
++--------------+--------------+-------------+------+
+| region_name  | school_name  | class_name  | num  |
++--------------+--------------+-------------+------+
+| NULL         | NULL         | NULL        | 16   | --整体结果
+| NULL         | NULL         | 战士班         | 4    | --统计class_name
+| NULL         | NULL         | 打野班         | 4    |
+| NULL         | NULL         | 法师班         | 4    |
+| NULL         | NULL         | 辅助班         | 4    |
+| NULL         | 宝安中学         | NULL        | 4    |
+| NULL         | 宝安中学         | 战士班         | 4    |
+| NULL         | 宝安小学         | NULL        | 4    |
+| NULL         | 宝安小学         | 法师班         | 4    |
+| NULL         | 龙华大学         | NULL        | 4    |
+| NULL         | 龙华大学         | 打野班         | 4    |
+| NULL         | 龙华幼儿园        | NULL        | 4    |
+| NULL         | 龙华幼儿园        | 辅助班         | 4    |
+| 宝安区          | NULL         | NULL        | 8    |
+| 宝安区          | NULL         | 战士班         | 4    |
+| 宝安区          | NULL         | 法师班         | 4    |
+| 宝安区          | 宝安中学         | NULL        | 4    |
+| 宝安区          | 宝安中学         | 战士班         | 4    |
+| 宝安区          | 宝安小学         | NULL        | 4    |
+| 宝安区          | 宝安小学         | 法师班         | 4    |
+| 龙华区          | NULL         | NULL        | 8    |
+| 龙华区          | NULL         | 打野班         | 4    |
+| 龙华区          | NULL         | 辅助班         | 4    |
+| 龙华区          | 龙华大学         | NULL        | 4    |
+| 龙华区          | 龙华大学         | 打野班         | 4    |
+| 龙华区          | 龙华幼儿园        | NULL        | 4    |
+| 龙华区          | 龙华幼儿园        | 辅助班         | 4    |
++--------------+--------------+-------------+------+

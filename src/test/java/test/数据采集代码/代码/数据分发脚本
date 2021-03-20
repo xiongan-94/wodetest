@@ -1,0 +1,32 @@
+#! /bin/bash
+#1、判断是否传入参数
+if [ $# -lt 1 ]
+then
+	echo "必须传入一个文件/目录..."
+	exit
+fi
+#2、遍历传入的参数
+#$@: 将一个个的参数当成单独的个体
+#$*: 将所有的参数当成一个整体
+# xsync a.txt b.txt
+for file in $@
+do
+	#3、对传入的文件/文件夹判断是否存在
+	# -e: 判断文件/文件夹是否存在
+	# -d: 判断是否为文件夹
+	# -f: 判断是否为文件
+	if [ -e $file ]
+	then
+		#4、获取父目录、文件名
+		pdir=$(cd $(dirname $file);pwd) 
+		sdir=$(basename $file)
+		#5、在各主机上创建父目录
+		for host in hadoop102 hadoop103 hadoop104
+		do
+			#6、同步文件/文件夹
+			ssh $host "mkdir -p $pdir"
+			echo "================$host================"
+			rsync -av $pdir/$sdir $host:$pdir
+		done
+	fi
+done

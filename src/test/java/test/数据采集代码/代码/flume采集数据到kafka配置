@@ -1,0 +1,33 @@
+#taildir source ->interceptor->kafka channel
+#1、定义source、channel、agent名称
+a1.sources = r1
+a1.channels = c1
+
+#2、描述source
+a1.sources.r1.type = TAILDIR
+#指定监控的组名
+a1.sources.r1.filegroups = f1
+#指定f1组监控的路径
+a1.sources.r1.filegroups.f1 = /opt/module/applog/log/app.*
+#指定断点续传的文件
+a1.sources.r1.positionFile = /opt/module/flume/position.json
+#指定每个批次采集多少数据[batchSize<=事务的大小]
+a1.sources.r1.batchSize = 100
+
+#2.1、指定自定义拦截器
+#定义拦截器的名称
+a1.sources.r1.interceptors = i1
+#定义拦截器的全类名
+a1.sources.r1.interceptors.i1.type = com.atguigu.interceptor.ETLInterceptor$Builder
+
+#3、描述channel
+a1.channels.c1.type = org.apache.flume.channel.kafka.KafkaChannel
+#指定kafka集群
+a1.channels.c1.kafka.bootstrap.servers = hadoop102:9092,hadoop103:9092
+#指定数据写到kafka哪个topic
+a1.channels.c1.kafka.topic = applog
+#是否以Event对象的形式写入kafka
+a1.channels.c1.parseAsFlumeEvent = false
+
+#4、关联source->channel
+a1.sources.r1.channels = c1

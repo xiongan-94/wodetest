@@ -1,0 +1,25 @@
+#! /bin/bash
+#1、判断是否传入参数
+if [ $# -lt 1 ]
+then
+	echo "必须参数参数...."
+	exit
+fi
+#2、匹配参数，执行指定的逻辑
+case $1 in
+"start")
+	echo "===============start hdfs================="
+	ssh hadoop102 "start-dfs.sh"
+	echo "===============start yarn================="
+	ssh hadoop103 "start-yarn.sh"
+;;
+"stop")
+	echo "===============stop hdfs================="
+	ssh hadoop102 "stop-dfs.sh"
+	echo "===============stop yarn================="
+	ssh hadoop103 "stop-yarn.sh"
+;;
+*)
+	echo "参数输入错误,必须是start/stop其中一个"
+;;
+esac

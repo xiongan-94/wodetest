@@ -1,0 +1,36 @@
+#从kafka读取数据显示在控制台
+#1、定义agent、source、channel、sink的名称
+a1.sources = r1
+a1.channels = c1
+a1.sinks = k1
+
+#1.1、假设有个拦截器
+
+#2、描述source
+a1.sources.r1.type = org.apache.flume.source.kafka.KafkaSource
+#设置kafka集群地址
+a1.sources.r1.kafka.bootstrap.servers = hadoop102:9092,hadoop103:9092
+#设置消费组的名称
+a1.sources.r1.kafka.consumer.group.id = xxx
+#设置消费哪个topic
+a1.sources.r1.kafka.topics = demo
+#设置一个批次消费多少条消息
+a1.sources.r1.batchSize = 10
+#从kafka读取数据的时候，kafka中的数据是否为Event类型
+a1.sources.r1.useFlumeEventFormat = false
+#指定消费者组第一次消费的时候应该从哪里开始消费
+a1.sources.r1.kafka.consumer.auto.offset.reset = earliest
+#a1.sources.r1.kafka.consumer.enable.auto.commit = true
+
+
+#3、描述channel
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 1000
+
+#4、描述sink
+a1.sinks.k1.type = logger
+
+#5、关联source->channel->sink
+a1.sinks.k1.channel = c1
+a1.sources.r1.channels = c1

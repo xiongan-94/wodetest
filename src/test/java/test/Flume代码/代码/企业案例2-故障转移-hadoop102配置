@@ -1,0 +1,39 @@
+#flume1配置
+#1、定义agent、source、channel、sink的名称
+a1.sources = r1
+a1.channels = c1
+a1.sinks = k1 k2
+#2、描述source
+a1.sources.r1.type = netcat
+a1.sources.r1.bind = 0.0.0.0
+a1.sources.r1.port = 9999
+
+#3、描述channel
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 1000
+
+#3.1 描述 sink processor
+#定义sink组名
+a1.sinkgroups = g1
+#定义sink组中包含哪些sink
+a1.sinkgroups.g1.sinks = k1 k2
+#定义sink组使用哪个sink processor
+a1.sinkgroups.g1.processor.type = failover
+#定义sink的优先级【优先级高的优先发送】
+a1.sinkgroups.g1.processor.priority.k1 = 5
+a1.sinkgroups.g1.processor.priority.k2 = 10
+#4、描述sink
+#k1的描述
+a1.sinks.k1.type = avro
+a1.sinks.k1.hostname = hadoop103
+a1.sinks.k1.port = 4545
+#k2的描述
+a1.sinks.k2.type = avro
+a1.sinks.k2.hostname = hadoop104
+a1.sinks.k2.port = 4545
+
+#5、关联source->sink->channel
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+a1.sinks.k2.channel = c1

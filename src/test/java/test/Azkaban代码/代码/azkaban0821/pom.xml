@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.atguigu</groupId>
+    <artifactId>azkaban0821</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.62</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atguigu.aa</groupId>
+            <artifactId>bb</artifactId>
+            <version>1.1</version>
+            <scope>system</scope>
+            <systemPath>D:/200821/azkaban/安装包/自定义报警/az-core-3.84.4.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atguigu.bb</groupId>
+            <artifactId>bb</artifactId>
+            <version>1.1</version>
+            <scope>system</scope>
+            <systemPath>D:/200821/azkaban/安装包/自定义报警/azkaban-common-3.84.4.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atguigu.cc</groupId>
+            <artifactId>bb</artifactId>
+            <version>1.1</version>
+            <scope>system</scope>
+            <systemPath>D:/200821/azkaban/安装包/自定义报警/gson-2.8.1.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atguigu.dd</groupId>
+            <artifactId>bb</artifactId>
+            <version>1.1</version>
+            <scope>system</scope>
+            <systemPath>D:/200821/azkaban/安装包/自定义报警/log4j-1.2.17.jar</systemPath>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
